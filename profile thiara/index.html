@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profilku | Profil Mahasiswa</title>
+  <meta name="description" content="Web profil mahasiswa Sistem Informasi - responsive untuk smartphone, tablet, dan desktop.">
+  
+  <!-- CSS Utama -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Input Radio untuk Tab Navigation -->
+  <input class="tab" type="radio" name="menu" id="tab-biodata" checked>
+  <input class="tab" type="radio" name="menu" id="tab-pendidikan">
+  <input class="tab" type="radio" name="menu" id="tab-pengalaman">
+  <input class="tab" type="radio" name="menu" id="tab-keahlian">
+  <input class="tab" type="radio" name="menu" id="tab-publikasi">
+
+  <div class="halaman">
+
+    <!-- HEADER / BANNER -->
+    <header>
+      <div class="foto" aria-label="Foto Profil">
+        <div class="foto-inner">
+          <!-- Masukkan nama file foto Anda di bawah ini -->
+          <img src="raaww.jpeg" alt="Foto Thiara Thaulanie Marta">
+        </div>
+      </div>
+      <div class="judul">
+        <h1>Profil Mahasiswa</h1>
+        <p>Thiara Thaulanie Marta &middot; Sistem Informasi &middot; Universitas Pembangunan Jaya</p>
+      </div>
+    </header>
+
+    <!-- NAVIGASI KIRI -->
+    <nav aria-label="Menu profil">
+      <ul>
+        <li><label for="tab-biodata">Biodata</label></li>
+        <li><label for="tab-pendidikan">Pendidikan</label></li>
+        <li><label for="tab-pengalaman">Pengalaman</label></li>
+        <li><label for="tab-keahlian">Keahlian</label></li>
+        <li><label for="tab-publikasi">Publikasi</label></li>
+      </ul>
+    </nav>
+
+    <!-- KONTEN UTAMA TENGAH -->
+    <section aria-live="polite">
+
+      <!-- BIODATA -->
+      <article class="panel" id="biodata">
+        <h2>Biodata</h2>
+        <dl class="biodata">
+          <dt>NIM</dt>            <dd>2025081057</dd>
+          <dt>Nama</dt>           <dd>Thiara Thaulanie Marta</dd>
+          <dt>Agama</dt>          <dd>Islam</dd>
+          <dt>Tanggal Lahir</dt>  <dd>xxxxxx</dd>
+          <dt>Tempat Lahir</dt>   <dd>xxxxxx</dd>
+          <dt>Program Studi</dt>  <dd>Sistem Informasi</dd>
+          <dt>Email</dt>          <dd>xxxxxx@gmail.com</dd>
+        </dl>
+        <p class="ringkas">Aku adalah Mahasiswa Sistem Informasi yang baik dan juga ramah.</p>
+      </article>
+
+      <!-- PENDIDIKAN -->
+      <article class="panel" id="pendidikan">
+        <h2>Pendidikan</h2>
+        <ol class="garis-waktu">
+          <li>
+            <strong>S1 Sistem Informasi</strong>
+            <span>Universitas Pembangunan Jaya</span>
+            <small>2025 &ndash; sekarang</small>
+          </li>
+          <li>
+            <strong>SMA Dharma Karya</strong>
+            <span>Jurusan IPS</span>
+            <small>2022 &ndash; 2025</small>
+          </li>
+          <li>
+            <strong>SMPN 226 Jakarta Selatan</strong>
+            <span>Pendidikan Menengah Pertama</span>
+            <small>2019 &ndash; 2022</small>
+          </li>
+          <li>
+            <strong>SDN Pondok Pinang Jakarta Selatan</strong>
+            <span>Pendidikan Dasar</span>
+            <small>2014 &ndash; 2019</small>
+          </li>
+        </ol>
+      </article>
+
+      <!-- PENGALAMAN -->
+      <article class="panel" id="pengalaman">
+        <h2>Pengalaman</h2>
+        <ol class="garis-waktu">
+          <li>
+            <strong>Mentor PRIMA (Pengenalan Kehidupan Kampus)</strong>
+            <span>Universitas Pembangunan Jaya</span>
+            <small>2025 &ndash; 2026</small>
+            <p>Mendampingi dan membimbing mahasiswa baru dalam proses adaptasi selama rangkaian kegiatan pengenalan kampus.</p>
+          </li>
+          <li>
+            <strong>Anggota Divisi Humas</strong>
+            <span>Himpunan Mahasiswa Sistem Informasi</span>
+            <small>2025 &ndash; sekarang</small>
+            <p>Membuat konten promosi dan mengelola komunikasi antara organisasi dan anggotanya.</p>
+          </li>
+          <li>
+            <strong>Anggota Divisi Hubungan Masyarakat</strong>
+            <span>Concordia UPJ</span>
+            <small>2024</small>
+            <p>Menjalin komunikasi strategis dengan mitra eksternal, berhasil mengamankan pendanaan dari berbagai sponsor, serta mengoordinasikan undangan narasumber untuk kesuksesan acara..</p>
+          </li>
+        </ol>
+      </article>
+
+      <!-- KEAHLIAN -->
+      <article class="panel" id="keahlian">
+        <h2>Keahlian</h2>
+        <ul class="keahlian">
+          <li>
+            <span>HTML &amp; CSS</span>
+            <meter min="0" max="100" value="85">85%</meter>
+          </li>
+          <li>
+            <span>JavaScript</span>
+            <meter min="0" max="100" value="60">60%</meter>
+          </li>
+          <li>
+            <span>Basis Data (MySQL)</span>
+            <meter min="0" max="100" value="70">85%</meter>
+          </li>
+          <li>
+            <span>Git &amp; GitHub</span>
+            <meter min="0" max="100" value="75">75%</meter>
+          </li>
+          <li>
+            <span>Analisis &amp; Desain Sistem</span>
+            <meter min="0" max="100" value="70">70%</meter>
+          </li>
+        </ul>
+      </article>
+
+      <!-- PUBLIKASI -->
+      <article class="panel" id="publikasi">
+        <h2>Publikasi</h2>
+        <ul class="publikasi">
+            
+          <li>
+            <cite>Rancang Bangun Sistem Informasi Perpustakaan Berbasis Web</cite>
+            <span>Jurnal Mahasiswa Sistem Informasi, 2025</span>
+          </li>
+          <li>
+            <cite>Penerapan Responsive Web Design pada Profil Organisasi Kampus</cite>
+            <span>Prosiding Seminar Mahasiswa Teknologi, 2026</span>
+          </li>
+          <li>
+            <cite>Analisis Kebutuhan Pengguna untuk Aplikasi Peminjaman Ruang Belajar</cite>
+            <span>Laporan Proyek, 2024</span>
+          </li>
+        </ul>
+      </article>
+
+    </section>
+
+    <!-- ASIDE HOBI KANAN -->
+    <aside aria-label="Hobi">
+      <h2>Hobi</h2>
+      <ul>
+        <li>Joging</li>
+        <li>Membaca buku</li>
+        <li>Mendengarkan musik</li>
+        <li>Dance</li>
+        <li>Bulutangkis</li>
+      </ul>
+    </aside>
+
+    <!-- FOOTER SEJAJAR HORIZONTAL -->
+    <footer>
+      <ul class="sosial">
+        <li>Instagram: @nama</li>
+      </ul>
+      <p class="hak-cipta">&copy; 2026 All Rights Reserved</p>
+      <p class="merek">
+        <strong>Profilku</strong>
+        <span>Satu halaman, seluruh cerita saya.</span>
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>

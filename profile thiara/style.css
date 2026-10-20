@@ -1,0 +1,626 @@
+/* ==========================================================================
+   1. RESET & VARIABEL WARNA (DARK INDIGO & ELECTRIC CYAN)
+   ========================================================================== */
+:root {
+  --primary-indigo: #1b1b3a;       /* Dark Indigo */
+  --indigo-gradient: linear-gradient(135deg, #1b1b3a 0%, #2e2a65 100%);
+  --accent-cyan: #00d2ff;          /* Electric Cyan */
+  --bg-page: #f2f5f9;              /* Cool Grey */
+  --bg-card: #ffffff;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --border-light: #e2e8f0;
+  --radius-lg: 24px;
+  --radius-md: 14px;
+  --shadow-soft: 0 12px 30px -8px rgba(27, 27, 58, 0.08);
+  --shadow-glow: 0 8px 20px rgba(0, 210, 255, 0.3);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-page);
+  /* Pola background titik-titik lembut */
+  background-image: radial-gradient(#cbd5e1 1.2px, transparent 1.2px);
+  background-size: 20px 20px;
+  color: var(--text-dark);
+  line-height: 1.6;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Sembunyikan Radio Input */
+input.tab {
+  display: none;
+}
+
+/* Container Utama Grid 3-Kolom */
+.halaman {
+  width: 100%;
+  max-width: 1240px;
+  display: grid;
+  grid-template-columns: 240px 1fr 270px;
+  grid-template-rows: auto 1fr auto;
+  gap: 1.8rem;
+  align-items: start;
+}
+
+/* ==========================================================================
+   2. HEADER BANNER & FOTO PROFIL TEGAK
+   ========================================================================== */
+header {
+  grid-column: 1 / -1;
+  background: var(--indigo-gradient);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 3rem;
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -15px rgba(27, 27, 58, 0.3);
+}
+
+/* Aksesoris Geometris Banner */
+header::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  bottom: -80px;
+  width: 220px;
+  height: 220px;
+  background: var(--accent-cyan);
+  opacity: 0.9;
+  transform: rotate(45deg);
+  border-radius: 35px;
+  z-index: 1;
+}
+
+/* Frame Belah Ketupat untuk Foto */
+.foto {
+  width: 85px;
+  height: 85px;
+  background: var(--accent-cyan);
+  transform: rotate(45deg);
+  border-radius: 22px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-glow);
+  z-index: 2;
+  margin-left: 0.5rem;
+  border: 3px solid #ffffff;
+  position: relative;
+}
+
+/* Pembungkus Dalam Foto (Membalikkan Rotasi Supaya Gambar Tegak Lurus) */
+.foto-inner {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-45deg) scale(1.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.foto-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* SVG Fallback jika belum ada foto */
+.foto svg {
+  transform: rotate(-45deg);
+  stroke: #ffffff;
+  width: 40px;
+  height: 40px;
+}
+
+.judul {
+  z-index: 2;
+}
+
+.judul h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.2rem;
+}
+
+.judul p {
+  color: #a5f3fc;
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   3. MENU NAVIGASI KIRI (FLOATING CARD)
+   ========================================================================== */
+nav {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+nav label {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1.1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  background: transparent;
+}
+
+nav label::before {
+  content: "◆";
+  font-size: 0.65rem;
+  color: #94a3b8;
+  width: 28px;
+  height: 28px;
+  background: #f1f5f9;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+nav label:hover {
+  background: #f0fdfa;
+  color: #0d9488;
+  transform: translateX(4px);
+}
+
+nav label:hover::before {
+  background: #ccfbf1;
+  color: #0d9488;
+}
+
+/* Menu Aktif saat Dipilih */
+#tab-biodata:checked ~ .halaman nav label[for="tab-biodata"],
+#tab-pendidikan:checked ~ .halaman nav label[for="tab-pendidikan"],
+#tab-pengalaman:checked ~ .halaman nav label[for="tab-pengalaman"],
+#tab-keahlian:checked ~ .halaman nav label[for="tab-keahlian"],
+#tab-publikasi:checked ~ .halaman nav label[for="tab-publikasi"] {
+  background: var(--indigo-gradient);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(27, 27, 58, 0.25);
+  transform: translateX(0);
+}
+
+#tab-biodata:checked ~ .halaman nav label[for="tab-biodata"]::before,
+#tab-pendidikan:checked ~ .halaman nav label[for="tab-pendidikan"]::before,
+#tab-pengalaman:checked ~ .halaman nav label[for="tab-pengalaman"]::before,
+#tab-keahlian:checked ~ .halaman nav label[for="tab-keahlian"]::before,
+#tab-publikasi:checked ~ .halaman nav label[for="tab-publikasi"]::before {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
+}
+
+/* ==========================================================================
+   4. SECTION KONTEN UTAMA (KOLOM TENGAH)
+   ========================================================================== */
+section {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-soft);
+  min-height: 440px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.panel {
+  display: none;
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#tab-biodata:checked ~ .halaman section #biodata,
+#tab-pendidikan:checked ~ .halaman section #pendidikan,
+#tab-pengalaman:checked ~ .halaman section #pengalaman,
+#tab-keahlian:checked ~ .halaman section #keahlian,
+#tab-publikasi:checked ~ .halaman section #publikasi {
+  display: block;
+}
+
+.panel h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary-indigo);
+  margin-bottom: 0.3rem;
+  position: relative;
+}
+
+.panel h2::after {
+  content: "";
+  display: block;
+  width: 55px;
+  height: 4px;
+  background: var(--accent-cyan);
+  border-radius: 2px;
+  margin-top: 0.4rem;
+  margin-bottom: 1.8rem;
+}
+
+/* Table Row Biodata */
+.biodata {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 0.5rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.biodata dt, .biodata dd {
+  padding: 0.9rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 10px;
+}
+
+.biodata dt {
+  color: var(--text-muted);
+  font-weight: 600;
+  background: #f8fafc;
+}
+
+.biodata dd {
+  color: var(--text-dark);
+  font-weight: 700;
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  transition: var(--transition);
+}
+
+.biodata dd:hover {
+  border-color: var(--accent-cyan);
+  background: #f0fdfa;
+  transform: translateX(4px);
+}
+
+.ringkas {
+  background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+  padding: 1.4rem;
+  border-radius: var(--radius-md);
+  border-left: 5px solid var(--accent-cyan);
+  font-size: 0.95rem;
+  color: #0369a1;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  line-height: 1.6;
+}
+
+/* Timeline (Pendidikan & Pengalaman) */
+.garis-waktu {
+  list-style: none;
+  padding-left: 1.25rem;
+  border-left: 2px dashed #cbd5e1;
+}
+
+.garis-waktu li {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.garis-waktu li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.25rem - 7px);
+  top: 0.35rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 0 4px #ffffff, 0 0 10px var(--accent-cyan);
+}
+
+.garis-waktu strong {
+  display: block;
+  font-size: 1.05rem;
+  color: var(--primary-indigo);
+}
+
+.garis-waktu span {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.garis-waktu small {
+  display: inline-block;
+  font-size: 0.8rem;
+  background: #f1f5f9;
+  padding: 0.15rem 0.6rem;
+  border-radius: 6px;
+  color: #475569;
+  margin-left: 0.5rem;
+}
+
+.garis-waktu p {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: #475569;
+}
+
+/* Keahlian (Meter Styling) */
+.keahlian {
+  list-style: none;
+}
+
+.keahlian li {
+  margin-bottom: 1.4rem;
+}
+
+.keahlian span {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+}
+
+meter {
+  width: 100%;
+  height: 12px;
+  border-radius: 10px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+meter::-webkit-meter-bar {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+
+meter::-webkit-meter-optimum-value {
+  background: linear-gradient(90deg, #00d2ff 0%, #00b8e6 100%);
+  border-radius: 10px;
+}
+
+/* List Publikasi */
+.publikasi {
+  list-style: none;
+}
+
+.publikasi li {
+  padding: 1.25rem;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+  transition: var(--transition);
+  background: #fafafa;
+}
+
+.publikasi li:hover {
+  border-color: var(--accent-cyan);
+  background: #f0fdfa;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 210, 255, 0.1);
+}
+
+.publikasi cite {
+  display: block;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--primary-indigo);
+  margin-bottom: 0.25rem;
+}
+
+.publikasi span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   5. ASIDE HOBI KANAN (BADGE CARDS)
+   ========================================================================== */
+aside {
+  background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 100%);
+  border: 1px solid #bae6fd;
+  border-radius: var(--radius-lg);
+  padding: 1.8rem 1.4rem;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+aside::before {
+  content: "";
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  width: 90px;
+  height: 90px;
+  background: rgba(0, 210, 255, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+aside h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-indigo);
+  margin-bottom: 1.25rem;
+}
+
+aside ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+aside li {
+  background: #ffffff;
+  border: 1px solid rgba(186, 230, 253, 0.8);
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: var(--transition);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+aside li::before {
+  content: "◆";
+  font-size: 0.6rem;
+  color: var(--accent-cyan);
+  transition: transform 0.3s ease;
+}
+
+aside li:hover {
+  background: #ffffff;
+  border-color: var(--accent-cyan);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 210, 255, 0.2);
+  color: var(--primary-indigo);
+}
+
+aside li:hover::before {
+  transform: scale(1.4) rotate(45deg);
+}
+
+/* ==========================================================================
+   6. FOOTER (SEJAJAR SEBERIS SIKAP)
+   ========================================================================== */
+footer {
+  grid-column: 1 / -1;
+  background: var(--primary-indigo);
+  color: #94a3b8;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.sosial {
+  list-style: none;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.hak-cipta {
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  text-align: center;
+}
+
+.merek {
+  text-align: right;
+}
+
+.merek strong {
+  display: block;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.merek span {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+/* ==========================================================================
+   7. RESPONSIVE DESIGN (TABLET & SMARTPHONE)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .halaman {
+    grid-template-columns: 200px 1fr;
+  }
+  aside {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem 0.5rem;
+  }
+
+  .halaman {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  header::after {
+    display: none;
+  }
+
+  .foto {
+    margin-left: 0;
+  }
+
+  nav ul {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 0.3rem;
+  }
+
+  nav label {
+    white-space: nowrap;
+    padding: 0.6rem 1rem;
+  }
+
+  section {
+    padding: 1.5rem;
+  }
+
+  .biodata {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .merek {
+    text-align: center;
+  }
+}
